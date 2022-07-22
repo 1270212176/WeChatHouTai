@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cyxy.mapper.FoodsInfoMapper">
+
+
+    <select id="findFoodsContent" resultType="com.cyxy.entity.vo.FoodsInfoVo">
+       select cyfoods.id,cyfoods.name,price,stock,uid,gid,cyfoods.type,cyimageinfo.url,cycategory.name cname,content,taste
+       from cyfoods,cyimageinfo,cycategory,cyfoodsinfo
+       where cyfoods.uid=cyimageinfo.id and cyfoods.type=cycategory.id and cyfoods.gid=cyfoodsinfo.id and cyfoods.id=#{id}
+    </select>
+</mapper>
